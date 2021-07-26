@@ -1,0 +1,2177 @@
+{
+	"info": {
+		"_postman_id": "a8298e8a-e078-44e5-a2f3-6206c000d1bf",
+		"name": "Carbon Usage API",
+		"description": "### Documentation for the technical test of  Carbon Usage Api\n\n\n- Run \"Login JWT\", get the token and use it as an global variable or as collection variable with the name 'token', all the requests need to be authenticated. \n- The authentication header should have the form of \"JWT {token}\".\n- The api supports pagination, sorting and filter by time range, e.g: \"Get Usage Filter by datetime\"",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/?sort=name&page_size=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								""
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "name"
+								},
+								{
+									"key": "page_size",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Get list of users."
+					},
+					"response": [
+						{
+							"name": "Get All Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/?sort=name&page_size=3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										""
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "name"
+										},
+										{
+											"key": "page_size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 00:53:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "445"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"lastPage\": 1,\n    \"count\": 1,\n    \"countItemsOnPage\": 1,\n    \"current\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 1,\n            \"password\": \"pbkdf2_sha256$260000$fNxSMEBxSgxtVJCqEyZvvR$TfT4VQ7k7qa7LSBfrnOdkzVuVwr+C4qb852u15yB4ts=\",\n            \"last_login\": null,\n            \"is_superuser\": true,\n            \"username\": \"admin\",\n            \"first_name\": \"\",\n            \"last_name\": \"\",\n            \"email\": \"\",\n            \"is_staff\": true,\n            \"is_active\": true,\n            \"date_joined\": \"2021-07-26T00:48:09.604138Z\",\n            \"name\": \"\",\n            \"groups\": [],\n            \"user_permissions\": [],\n            \"usage_types\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "test6user",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "a",
+									"type": "text"
+								},
+								{
+									"key": "is_staff",
+									"value": "True",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "is_superuser",
+									"value": "True",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Joao",
+									"type": "text"
+								},
+								{
+									"key": "is_active",
+									"value": "True",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								""
+							]
+						},
+						"description": "Creates Users"
+					},
+					"response": [
+						{
+							"name": "Create User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "test6user",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "a",
+											"type": "text"
+										},
+										{
+											"key": "is_staff",
+											"value": "True",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "is_superuser",
+											"value": "True",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "Joao",
+											"type": "text"
+										},
+										{
+											"key": "is_active",
+											"value": "True",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:46:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "45"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Joao\",\n    \"id\": 7,\n    \"username\": \"test6user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"2",
+								""
+							]
+						},
+						"description": "Get info from a specific user."
+					},
+					"response": [
+						{
+							"name": "Retrieve User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/2/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:28:35 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "353"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"password\": \"pbkdf2_sha256$260000$sw6XqfjcEvXovE1pgYq4qN$YBLMvYqT0iAiJ/I3tGWMSmI812SOnN1pOWnlE+BKsHQ=\",\n    \"last_login\": null,\n    \"is_superuser\": false,\n    \"username\": \"test2user\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"email\": \"\",\n    \"is_staff\": false,\n    \"is_active\": true,\n    \"date_joined\": \"2021-07-26T01:27:59.342425Z\",\n    \"name\": \"\",\n    \"groups\": [],\n    \"user_permissions\": [],\n    \"usage_types\": []\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Hughs",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"2",
+								""
+							]
+						},
+						"description": "Update a field/s of a specific user."
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Hughs",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/2/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:29:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "46"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"Hughs\",\n    \"id\": 2,\n    \"username\": \"test2user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"2",
+								""
+							]
+						},
+						"description": "Deletes specific user."
+					},
+					"response": [
+						{
+							"name": "Delete User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/2/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:29:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "User Usage",
+			"item": [
+				{
+					"name": "Get All User Usages for logged user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/usages/?page_size=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"usages",
+								""
+							],
+							"query": [
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						},
+						"description": "Get all the usages of the user that is currently logged."
+					},
+					"response": [
+						{
+							"name": "Get All User Usages for logged user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/usages/?page_size=5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"usages",
+										""
+									],
+									"query": [
+										{
+											"key": "page_size",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:30:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"lastPage\": 1,\n    \"count\": 2,\n    \"countItemsOnPage\": 1,\n    \"current\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 1,\n            \"usage_at\": \"2021-07-26T01:14:42.185367Z\",\n            \"amount\": 42,\n            \"user_id\": 1,\n            \"usage_type_id\": 103\n        },\n        {\n            \"id\": 2,\n            \"usage_at\": \"2021-07-26T01:14:52.851109Z\",\n            \"amount\": 32,\n            \"user_id\": 1,\n            \"usage_type_id\": 101\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create User Usage",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usage_type_id",
+									"value": "102",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "36",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/usages/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"usages",
+								""
+							]
+						},
+						"description": "Create new user usage."
+					},
+					"response": [
+						{
+							"name": "Create User Usage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "usage_type_id",
+											"value": "102",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "36",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/usages/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"usages",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:30:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"usage_at\": \"2021-07-26T01:30:37.793330Z\",\n    \"amount\": 36,\n    \"user_id\": 1,\n    \"usage_type_id\": 102\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Usage",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/usages/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"usages",
+								"2",
+								""
+							]
+						},
+						"description": "Get specific usage of the logged user."
+					},
+					"response": [
+						{
+							"name": "Get User Usage",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/usages/2/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"usages",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:31:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"usage_at\": \"2021-07-26T01:14:52.851109Z\",\n    \"amount\": 32,\n    \"user_id\": 1,\n    \"usage_type_id\": 101\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Usage Filter by datetime",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/usages/?usage_at_after=2021-07-20&usage_at_before=2021-07-27&page=1&sort=amount&page_size=10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"usages",
+								""
+							],
+							"query": [
+								{
+									"key": "usage_at_after",
+									"value": "2021-07-20"
+								},
+								{
+									"key": "usage_at_before",
+									"value": "2021-07-27"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "sort",
+									"value": "amount"
+								},
+								{
+									"key": "page_size",
+									"value": "10"
+								}
+							]
+						},
+						"description": "Get a list of the user usages (user that is logged) with the possibility:\n- filter by date interval\n- pagination (e.g.: page=1, page_size=4)\n- sort by amount, user_id, usage_type_id, usage_at"
+					},
+					"response": [
+						{
+							"name": "Get Usage Filter by datetime",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/usages/?usage_at_after=2021-07-20&usage_at_before=2021-07-27&page=1&sort=amount&page_size=10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"usages",
+										""
+									],
+									"query": [
+										{
+											"key": "usage_at_after",
+											"value": "2021-07-20"
+										},
+										{
+											"key": "usage_at_before",
+											"value": "2021-07-27"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "sort",
+											"value": "amount"
+										},
+										{
+											"key": "page_size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:32:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "385"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"lastPage\": 1,\n    \"count\": 3,\n    \"countItemsOnPage\": 1,\n    \"current\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 2,\n            \"usage_at\": \"2021-07-26T01:14:52.851109Z\",\n            \"amount\": 32,\n            \"user_id\": 1,\n            \"usage_type_id\": 101\n        },\n        {\n            \"id\": 4,\n            \"usage_at\": \"2021-07-26T01:30:37.793330Z\",\n            \"amount\": 36,\n            \"user_id\": 1,\n            \"usage_type_id\": 102\n        },\n        {\n            \"id\": 1,\n            \"usage_at\": \"2021-07-26T01:14:42.185367Z\",\n            \"amount\": 42,\n            \"user_id\": 1,\n            \"usage_type_id\": 103\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User Usage",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "amount",
+									"value": "4.2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/usages/2/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"usages",
+								"2",
+								""
+							]
+						},
+						"description": "Update a field/s of a specific usage of the logged user."
+					},
+					"response": [
+						{
+							"name": "Update User Usage",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "amount",
+											"value": "4.2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/usages/2/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"usages",
+										"2",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:33:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"usage_at\": \"2021-07-26T01:14:52.851109Z\",\n    \"amount\": 4.2,\n    \"user_id\": 1,\n    \"usage_type_id\": 101\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete User Usage",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/users/usages/5/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"users",
+								"usages",
+								"5",
+								""
+							]
+						},
+						"description": "Deletes specific user usage."
+					},
+					"response": [
+						{
+							"name": "Delete User Usage",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/users/usages/5/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"users",
+										"usages",
+										"5",
+										""
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:33:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Usage Type",
+			"item": [
+				{
+					"name": "Get All Usage Types",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/usage_types/?sort=factor&page_size=4&name=heating",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"usage_types",
+								""
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "factor"
+								},
+								{
+									"key": "page_size",
+									"value": "4"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "heating"
+								}
+							]
+						},
+						"description": "Get a list of usage types."
+					},
+					"response": [
+						{
+							"name": "Get All Usage Types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/usage_types/?sort=factor&page_size=4&name=heating",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"usage_types",
+										""
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "factor"
+										},
+										{
+											"key": "page_size",
+											"value": "4"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "heating"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:33:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "262"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"lastPage\": 1,\n    \"count\": 3,\n    \"countItemsOnPage\": 1,\n    \"current\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 102,\n            \"name\": \"heating\",\n            \"unit\": \"kwh\",\n            \"factor\": 3.892\n        },\n        {\n            \"id\": 103,\n            \"name\": \"heating\",\n            \"unit\": \"l\",\n            \"factor\": 8.57\n        },\n        {\n            \"id\": 104,\n            \"name\": \"heating\",\n            \"unit\": \"m3\",\n            \"factor\": 19.456\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Usage Type",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "other_type1",
+									"type": "text"
+								},
+								{
+									"key": "factor",
+									"value": "10.3",
+									"type": "text"
+								},
+								{
+									"key": "unit",
+									"value": "kg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/usage_types/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"usage_types",
+								""
+							]
+						},
+						"description": "Create an usage type."
+					},
+					"response": [
+						{
+							"name": "Create Usage Type",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "other_type1",
+											"type": "text"
+										},
+										{
+											"key": "factor",
+											"value": "10.3",
+											"type": "text"
+										},
+										{
+											"key": "unit",
+											"value": "kg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/usage_types/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"usage_types",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:33:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 105,\n    \"name\": \"other_type1\",\n    \"unit\": \"kg\",\n    \"factor\": 10.3\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve Usage Type",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/usage_types/101/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"usage_types",
+								"101",
+								""
+							]
+						},
+						"description": "Get info of a specific usage type."
+					},
+					"response": [
+						{
+							"name": "Retrieve Usage Type",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/usage_types/101/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"usage_types",
+										"101",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:34:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "52"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 101,\n    \"name\": \"water\",\n    \"unit\": \"kg\",\n    \"factor\": 26.93\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Usage Type",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "other_type1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/usage_types/105/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"usage_types",
+								"105",
+								""
+							]
+						},
+						"description": "Update field/s of a specific usage type."
+					},
+					"response": [
+						{
+							"name": "Update Usage Type",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "other_type1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/carbon_usage/usage_types/105/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"usage_types",
+										"105",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:34:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "57"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 105,\n    \"name\": \"other_type1\",\n    \"unit\": \"kg\",\n    \"factor\": 10.3\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Usage Type",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/carbon_usage/usage_types/106/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"usage_types",
+								"106",
+								""
+							]
+						},
+						"description": "Delete a specific usage type."
+					},
+					"response": [
+						{
+							"name": "Delete Usage Type",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/carbon_usage/usage_types/106/",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"carbon_usage",
+										"usage_types",
+										"106",
+										""
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 26 Jul 2021 01:34:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.8.11"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Not found.\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login JWT",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/carbon_usage/auth/login/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"carbon_usage",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login JWT",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "a",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/carbon_usage/auth/login/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"carbon_usage",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 Jul 2021 01:34:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.8.11"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "437"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI3MzQ5Njk3LCJqdGkiOiJmMWVjZWU1ODM4NDI0NGZmODBjYjBhMGNjNjJkZmExOSIsInVzZXJfaWQiOjF9.WV_luQnp2TEPkjBw7qhm-yer6myjlPI80ns7_lfEuDs\",\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYyNzQzNjA5NywianRpIjoiZjlmMjgwMWQyNzFmNGU2NmEwYzE5OWVjYTFiZWI4MDEiLCJ1c2VyX2lkIjoxfQ.L1p6QTZgGKaRPZY6M8FsVPxkwqCyB_yWv6y4fvnx4Ko\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjI3MzQ3MDA4LCJqdGkiOiIxYzQ0ODY3MDU2YTU0NmM1ODE4OTY2YTAyZmQyMzY2ZSIsInVzZXJfaWQiOjF9.Gq-mda5yE4SYj3j5I_90zFUZGYUUNTPmkjQcAcR-6Pc"
+		}
+	]
+}
